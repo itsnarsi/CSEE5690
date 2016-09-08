@@ -191,6 +191,14 @@ From Figure - \ref{fig:sel_vm}, it can seen that except virtual machine $Wulfy-C
 
 The performance of each forecasting method is tested using mean absolute deviation (MAD) and tracking signal ratio (TS) as explained in section-\ref{sec:intro}. For the forecasting method to perform better its mean absolute deviation should be close to zero and its tracking signal to be between -4 and +4.
 
+
+\begin{figure}[ht]
+\includegraphics[scale=0.4]{comp}
+\centering
+\caption{Large trend effect on prediton using exponential smoothong with trend, moving window regression methods.}
+\label{fig:comp}
+\end{figure}
+
 \subsection{Results}
 \label{subsec:results}
 
@@ -248,9 +256,16 @@ In table-\ref{table:results} mean absolute deviation(MAD) and tracking signal ra
 
 From table-\ref{table:results}, it can be seen that exponential smoothing with trend produced better performance with very good tracking signal ratio (TS) compared any other method. Virtual machine 'Wullfy-Compute03' due vary less variance through the data it achieved vary less mean absolute deviation through all the forecasting methods.
 
+In case of moving average and weighted moving average forecasting methods, the performance is not consistent across all the tested virtual machines. virtual machines – $kc-itsm-pweb01, kc-pd-sql01, and KC-ISFS-DCIM01$ – achieved better performance with small window size. Whereas, $kc-issr-nmap1$ and $Wulfy-Compute03$ achieved better performance as the window size is increased. 
+
+Except for $kc-itsm-pweb01$ all the virtual machines achieved better performance as the $a$ values is increased in both exponential smoothing and exponential smoothing with trend. In these two, exponential smoothing with trend achieved better performance.
+
+
+From both regression results it can be seen that the performance totally depends on the variation in the data. In both cases it can be seen in table-\ref{table:results} that except for last two virtual machines the mean absolute deviation reduced as the window size is increased. If there is a sudden change in the data, especially for smaller window and almost all cases of $2^{nd}$ order polynomial regression, the prediction goes way off the data. If these is a huge negative trend, then there is a chance for prediction to be in negative values. This can also be seen in case of exponential smoothing with trend as shown in figure-\ref{fig:comp}.
 \section{Conclusion}
 
-Talk about what we just wrote in this paper.
+In paper we used different types of forecasting techniques including simple forecasting techniques such as moving average, weighted moving average, exponential smoothing and exponential smoothing with trend. Along with these a moving window regression technique is also used to forecast CPU utilization by different virtual machines in UMKC datacenter. Out of all forecasting methods exponential smoothing with trend achieved better performance than other method. However, if there is a large trend in the data, the prediction using this method is far away from actual value. So, there is no one better method to use on all the virtual machine. It is better to create a method from combination of these methods or use different forecasting techniques.
+
 
 % Can use something like this to put references on a page
 % by themselves when using endfloat and the captionsoff option.
